@@ -390,6 +390,7 @@ def show_landmarks_batch(sample_batched):
 
         plt.title('Batch from dataloader')
 
+
 for i_batch, sample_batched in enumerate(dataloader):
     print(i_batch, sample_batched['image'].size(),
           sample_batched['landmarks'].size())
