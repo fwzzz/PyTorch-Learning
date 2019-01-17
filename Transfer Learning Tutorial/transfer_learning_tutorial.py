@@ -105,6 +105,7 @@ device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 # Let's visualize a few training images so as to understand the data
 # augmentations.
 
+
 def imshow(inp, title=None):
     """Imshow for Tensor."""
     inp = inp.numpy().transpose((1, 2, 0))
@@ -115,7 +116,7 @@ def imshow(inp, title=None):
     plt.imshow(inp)
     if title is not None:
         plt.title(title)
-    plt.pause(0.001)  # pause a bit so that plots are updated
+    # plt.pause(0.001)  # pause a bit so that plots are updated
 
 
 # Get a batch of training data
@@ -238,6 +239,7 @@ def visualize_model(model, num_images=6):
                 imshow(inputs.cpu().data[j])
 
                 if images_so_far == num_images:
+                    plt.show()
                     model.train(mode=was_training)
                     return
         model.train(mode=was_training)
@@ -248,6 +250,7 @@ def visualize_model(model, num_images=6):
 #
 # Load a pretrained model and reset final fully connected layer.
 #
+
 
 model_ft = models.resnet18(pretrained=True)
 num_ftrs = model_ft.fc.in_features
